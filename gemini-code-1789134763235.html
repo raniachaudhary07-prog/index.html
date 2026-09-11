@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Husband ❤️</title>
+  <style>
+    :root {
+      --primary-color: #ff4d6d;
+      --secondary-color: #ff758f;
+      --bg-color: #fff0f5;
+      --card-bg: #ffffff;
+      --text-color: #4a4a4a;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 2rem 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 { margin: 0; font-size: 2.2rem; }
+    p.subtitle { margin-top: 8px; font-style: italic; opacity: 0.9; }
+
+    .container {
+      max-width: 700px;
+      width: 90%;
+      margin: 20px auto;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    /* Secret Gate Section */
+    #gate-screen {
+      text-align: center;
+    }
+
+    /* Quiz Styling */
+    .question-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    input[type="text"], textarea, select {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ffe6ea;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus, textarea:focus, select:focus {
+      border-color: var(--primary-color);
+    }
+
+    button {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.1s;
+      width: 100%;
+    }
+
+    button:hover {
+      background: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    /* Spicy Scratch Card Reveal */
+    .scratch-box {
+      background: #ffe6ea;
+      border: 2px dashed var(--primary-color);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--primary-color);
+      transition: all 0.3s ease;
+    }
+
+    .scratch-box.revealed {
+      background: #fff;
+      border-style: solid;
+      color: #333;
+    }
+
+    /* Love Coupons */
+    .coupons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .coupon {
+      border: 2px dashed var(--secondary-color);
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      background: #fff;
+    }
+
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>For My Favorite Person ❤️</h1>
+    <p class="subtitle">A special corner made just for you...</p>
+  </header>
+
+  <div class="container">
+
+    <!-- STEP 1: PASSWORD GATE -->
+    <div id="gate-screen" class="card">
+      <h2>🔒 VIP Entry Only</h2>
+      <p>Enter the secret password to continue:</p>
+      <input type="text" id="passcode" placeholder="Hint: Our wedding date / anniversary MMDD">
+      <br><br>
+      <button onclick="checkPassword()">Unlock My Heart</button>
+      <p id="gate-error" style="color: red; display: none; margin-top: 10px;">Oops! Wrong passcode, try again baby 😉</p>
+    </div>
+
+    <!-- MAIN CONTENT (Hidden until password unlocked) -->
+    <div id="main-content" class="hidden">
+
+      <!-- STEP 2: SECRET REVEAL CARD -->
+      <div class="card">
+        <h2>🔥 Click to Reveal Today's Dare</h2>
+        <div id="spicy-card" class="scratch-box" onclick="revealSecret()">
+          ✨ Tap here to unlock a spicy secret ✨
+        </div>
+      </div>
+
+      <!-- STEP 3: THE Q&A QUIZ -->
+      <div class="card">
+        <h2>🌶️ The Cute & Spicy Questionnaire</h2>
+        <p>Answer every question honestly to send your responses straight to my inbox!</p>
+        
+        <form id="love-form" onsubmit="sendAnswers(event)">
+          
+          <div class="question-group">
+            <label for="q1">1. 🌸 What was the exact moment you realized you loved me?</label>
+            <textarea id="q1" rows="2" required></textarea>
+          </div>
+
+          <div class="question-group">
+            <label for="q2">2. 🌶️ What is your favorite outfit/lingerie of mine?</label>
+            <input type="text" id="q2" required>
+          </div>
+
+          <div class="question-group">
+            <label for="q3">3. 😈 What is one fantasy or date night idea you want to try with me?</label>
+            <textarea id="q3" rows="2" required></textarea>
+          </div>
+
+          <div class="question-group">
+            <label for="q4">4. 🕯️ Pick our vibe for tonight:</label>
+            <select id="q4" required>
+              <option value="">Choose one...</option>
+              <option value="Candlelit & Romantic">A) Candlelit & Romantic</option>
+              <option value="Playful & Fun">B) Playful & Fun</option>
+              <option value="Wild & Passionate">C) Wild & Passionate</option>
+            </select>
+          </div>
+
+          <div class="question-group">
+            <label for="q5">5. 💋 How many kisses do I deserve when you come home?</label>
+            <input type="text" id="q5" placeholder="e.g. Infinite!" required>
+          </div>
+
+          <button type="submit">Send Answers to Wifey 💌</button>
+        </form>
+      </div>
+
+      <!-- STEP 4: LOVE COUPONS -->
+      <div class="card">
+        <h2>🎟️ Your Love Coupons</h2>
+        <p>Redeemable anytime with your wife!</p>
+        <div class="coupons-grid">
+          <div class="coupon">
+            <h3>💆‍♂️ Massage Night</h3>
+            <p>15-minute back or foot massage, no questions asked.</p>
+          </div>
+          <div class="coupon">
+            <h3>🌶️ Wife's Special Treat</h3>
+            <p>You pick the outfit, I pick the time.</p>
+          </div>
+          <div class="coupon">
+            <h3>🍕 Dinner Choice</h3>
+            <p>You choose whatever food you want tonight!</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    // Set your custom secret passcode here (lowercase or numbers)
+    const SECRET_PASS = "1234"; // CHANGE THIS to your date or secret phrase!
+
+    // Email address where his answers will be sent
+    const YOUR_EMAIL = "your-email@example.com"; // CHANGE THIS to your actual email!
+
+    function checkPassword() {
+      const input = document.getElementById('passcode').value.trim();
+      if (input === SECRET_PASS) {
+        document.getElementById('gate-screen').classList.add('hidden');
+        document.getElementById('main-content').classList.remove('hidden');
+      } else {
+        document.getElementById('gate-error').style.display = 'block';
+      }
+    }
+
+    function revealSecret() {
+      const box = document.getElementById('spicy-card');
+      box.classList.add('revealed');
+      box.innerHTML = "🌶️ <b>Tonight's Reward:</b> You get to choose my outfit for date night!";
+    }
+
+    function sendAnswers(e) {
+      e.preventDefault();
+      
+      const q1 = document.getElementById('q1').value;
+      const q2 = document.getElementById('q2').value;
+      const q3 = document.getElementById('q3').value;
+      const q4 = document.getElementById('q4').value;
+      const q5 = document.getElementById('q5').value;
+
+      const body = `Here are my answers for you my love:\n\n` +
+        `1. When I realized I loved you:\n${q1}\n\n` +
+        `2. Favorite outfit/lingerie:\n${q2}\n\n` +
+        `3. Fantasy / Date night idea:\n${q3}\n\n` +
+        `4. Vibe for tonight:\n${q4}\n\n` +
+        `5. Kisses owed:\n${q5}\n`;
+
+      const mailtoLink = `mailto:${YOUR_EMAIL}?subject=${encodeURIComponent("My Quiz Answers ❤️")}&body=${encodeURIComponent(body)}`;
+      
+      window.location.href = mailtoLink;
+    }
+  </script>
+</body>
+</html>
