@@ -12,7 +12,6 @@
       --card-bg: #ffffff;
       --text-color: #4a4a4a;
     }
-
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: var(--bg-color);
@@ -23,7 +22,6 @@
       flex-direction: column;
       align-items: center;
     }
-
     header {
       background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       color: white;
@@ -32,16 +30,9 @@
       padding: 2rem 0;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-
     h1 { margin: 0; font-size: 2.2rem; }
     p.subtitle { margin-top: 8px; font-style: italic; opacity: 0.9; }
-
-    .container {
-      max-width: 700px;
-      width: 90%;
-      margin: 20px auto;
-    }
-
+    .container { max-width: 700px; width: 90%; margin: 20px auto; }
     .card {
       background: var(--card-bg);
       border-radius: 15px;
@@ -49,24 +40,16 @@
       margin-bottom: 25px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.05);
     }
-
-    /* Secret Gate Section */
-    #gate-screen {
-      text-align: center;
+    #gate-screen { text-align: center; }
+    .section-title {
+      color: var(--primary-color);
+      border-bottom: 2px solid #ffe6ea;
+      padding-bottom: 8px;
+      margin-top: 25px;
+      margin-bottom: 15px;
     }
-
-    /* Quiz Styling */
-    .question-group {
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 8px;
-      color: #333;
-    }
-
+    .question-group { margin-bottom: 20px; }
+    label { display: block; font-weight: bold; margin-bottom: 8px; color: #333; }
     input[type="text"], textarea, select {
       width: 100%;
       padding: 12px;
@@ -77,30 +60,22 @@
       outline: none;
       transition: border-color 0.3s;
     }
-
     input[type="text"]:focus, textarea:focus, select:focus {
       border-color: var(--primary-color);
     }
-
     button {
       background: var(--primary-color);
       color: white;
       border: none;
-      padding: 12px 25px;
-      font-size: 1rem;
+      padding: 14px 25px;
+      font-size: 1.1rem;
       font-weight: bold;
       border-radius: 25px;
       cursor: pointer;
       transition: background 0.3s, transform 0.1s;
       width: 100%;
     }
-
-    button:hover {
-      background: var(--secondary-color);
-      transform: translateY(-2px);
-    }
-
-    /* Spicy Scratch Card Reveal */
+    button:hover { background: var(--secondary-color); transform: translateY(-2px); }
     .scratch-box {
       background: #ffe6ea;
       border: 2px dashed var(--primary-color);
@@ -112,20 +87,12 @@
       color: var(--primary-color);
       transition: all 0.3s ease;
     }
-
-    .scratch-box.revealed {
-      background: #fff;
-      border-style: solid;
-      color: #333;
-    }
-
-    /* Love Coupons */
+    .scratch-box.revealed { background: #fff; border-style: solid; color: #333; }
     .coupons-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 15px;
     }
-
     .coupon {
       border: 2px dashed var(--secondary-color);
       border-radius: 10px;
@@ -133,7 +100,6 @@
       text-align: center;
       background: #fff;
     }
-
     .hidden { display: none; }
   </style>
 </head>
@@ -145,12 +111,11 @@
   </header>
 
   <div class="container">
-
     <!-- STEP 1: PASSWORD GATE -->
     <div id="gate-screen" class="card">
       <h2>🔒 VIP Entry Only</h2>
       <p>Enter the secret password to continue:</p>
-      <input type="text" id="passcode" placeholder="Hint: Our wedding date / anniversary MMDD">
+      <input type="text" id="passcode" placeholder="Enter our passcode">
       <br><br>
       <button onclick="checkPassword()">Unlock My Heart</button>
       <p id="gate-error" style="color: red; display: none; margin-top: 10px;">Oops! Wrong passcode, try again baby 😉</p>
@@ -158,8 +123,8 @@
 
     <!-- MAIN CONTENT (Hidden until password unlocked) -->
     <div id="main-content" class="hidden">
-
-      <!-- STEP 2: SECRET REVEAL CARD -->
+      
+      <!-- SECRET REVEAL CARD -->
       <div class="card">
         <h2>🔥 Click to Reveal Today's Dare</h2>
         <div id="spicy-card" class="scratch-box" onclick="revealSecret()">
@@ -167,48 +132,225 @@
         </div>
       </div>
 
-      <!-- STEP 3: THE Q&A QUIZ -->
+      <!-- THE 200 QUESTIONNAIRE -->
       <div class="card">
-        <h2>🌶️ The Cute & Spicy Questionnaire</h2>
+        <h2>🌶️ 100 Romantic & 100 Spicy Questions</h2>
         <p>Answer every question honestly to send your responses straight to my inbox!</p>
         
         <form id="love-form" onsubmit="sendAnswers(event)">
           
-          <div class="question-group">
-            <label for="q1">1. 🌸 What was the exact moment you realized you loved me?</label>
-            <textarea id="q1" rows="2" required></textarea>
-          </div>
+          <h3 class="section-title">💕 100 Romantic Questions</h3>
 
-          <div class="question-group">
-            <label for="q2">2. 🌶️ What is your favorite outfit/lingerie of mine?</label>
-            <input type="text" id="q2" required>
-          </div>
+          <div class="question-group"><label for="q1">1. What was the exact moment you realized you loved me?</label><textarea id="q1" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q2">2. What is your absolute favorite memory of us together?</label><textarea id="q2" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q3">3. What is one small thing I do daily that makes you smile?</label><input type="text" id="q3" required></div>
+          <div class="question-group"><label for="q4">4. What is your favorite physical feature of mine?</label><input type="text" id="q4" required></div>
+          <div class="question-group"><label for="q5">5. Where is our dream romantic vacation destination?</label><input type="text" id="q5" required></div>
+          <div class="question-group"><label for="q6">6. What song always reminds you of me?</label><input type="text" id="q6" required></div>
+          <div class="question-group"><label for="q7">7. What was your very first thought when you saw me?</label><textarea id="q7" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q8">8. What is your favorite date night we’ve ever had?</label><textarea id="q8" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q9">9. What is one promise you want to make to me for our future?</label><textarea id="q9" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q10">10. How do you feel when I hold your hand in public?</label><input type="text" id="q10" required></div>
+          <div class="question-group"><label for="q11">11. What is your favorite photo of us together?</label><input type="text" id="q11" required></div>
+          <div class="question-group"><label for="q12">12. What habit of mine do you secretly find cute?</label><input type="text" id="q12" required></div>
+          <div class="question-group"><label for="q13">13. If you could relive one day of our relationship, which day would it be?</label><textarea id="q13" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q14">14. What compliment from me made you feel the happiest?</label><textarea id="q14" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q15">15. What is your favorite place to hug or cuddle?</label><input type="text" id="q15" required></div>
+          <div class="question-group"><label for="q16">16. What is one thing I’ve taught you or inspired you to do?</label><textarea id="q16" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q17">17. How do you describe me to your friends?</label><textarea id="q17" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q18">18. What is your favorite pet name for me?</label><input type="text" id="q18" required></div>
+          <div class="question-group"><label for="q19">19. What is something you’re looking forward to doing with me this year?</label><textarea id="q19" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q20">20. What makes our love unique compared to anyone else?</label><textarea id="q20" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q21">21. What is your favorite thing we do before falling asleep?</label><input type="text" id="q21" required></div>
+          <div class="question-group"><label for="q22">22. What was your favorite outfit I ever wore for you?</label><input type="text" id="q22" required></div>
+          <div class="question-group"><label for="q23">23. What is one movie or show that feels like "our" story?</label><input type="text" id="q23" required></div>
+          <div class="question-group"><label for="q24">24. What makes you feel safest when you’re with me?</label><textarea id="q24" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q25">25. What is a secret wish you have for our marriage?</label><textarea id="q25" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q26">26. How do you like your morning kisses?</label><input type="text" id="q26" required></div>
+          <div class="question-group"><label for="q27">27. What is your favorite meal we’ve eaten together?</label><input type="text" id="q27" required></div>
+          <div class="question-group"><label for="q28">28. What is one romantic gesture you'd love me to surprise you with?</label><textarea id="q28" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q29">29. What is something cute I do when I think you aren’t looking?</label><input type="text" id="q29" required></div>
+          <div class="question-group"><label for="q30">30. If we could leave right now for a weekend getaway, where are we going?</label><input type="text" id="q30" required></div>
+          <div class="question-group"><label for="q31">31. What is your favorite gift I have ever given you?</label><input type="text" id="q31" required></div>
+          <div class="question-group"><label for="q32">32. How do you feel when you hear my voice after a long day?</label><input type="text" id="q32" required></div>
+          <div class="question-group"><label for="q33">33. What is one thing about me that always makes you laugh?</label><input type="text" id="q33" required></div>
+          <div class="question-group"><label for="q34">34. What is your favorite way to spend a rainy day with me?</label><input type="text" id="q34" required></div>
+          <div class="question-group"><label for="q35">35. What is one thing you love about my personality?</label><textarea id="q35" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q36">36. What is your favorite smell or perfume/cologne on me?</label><input type="text" id="q36" required></div>
+          <div class="question-group"><label for="q37">37. How many times a day do you think about me?</label><input type="text" id="q37" required></div>
+          <div class="question-group"><label for="q38">38. What is your favorite memory of us in the car together?</label><textarea id="q38" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q39">39. What is your favorite romance trope that applies to us?</label><input type="text" id="q39" required></div>
+          <div class="question-group"><label for="q40">40. What is one love letter or text message from me you’ll never forget?</label><textarea id="q40" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q41">41. What is your favorite kind of kiss from me?</label><input type="text" id="q41" required></div>
+          <div class="question-group"><label for="q42">42. How do you like to be comforted when you feel stressed?</label><textarea id="q42" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q43">43. What is your favorite place to cuddle on the couch?</label><input type="text" id="q43" required></div>
+          <div class="question-group"><label for="q44">44. What is one dream goal we will accomplish together?</label><textarea id="q44" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q45">45. What is the sweetest thing I’ve ever done for you?</label><textarea id="q45" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q46">46. What is your favorite season to be in love with me?</label><input type="text" id="q46" required></div>
+          <div class="question-group"><label for="q47">47. What is your favorite inside joke between us?</label><input type="text" id="q47" required></div>
+          <div class="question-group"><label for="q48">48. What is something you love about how we communicate?</label><textarea id="q48" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q49">49. What made you fall in love with my heart/soul?</label><textarea id="q49" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q50">50. What is one song you want us to dance to in the living room?</label><input type="text" id="q50" required></div>
+          <div class="question-group"><label for="q51">51. What is your favorite memory from our wedding/anniversary?</label><textarea id="q51" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q52">52. What is your favorite way I show you affection?</label><input type="text" id="q52" required></div>
+          <div class="question-group"><label for="q53">53. What is one thing you love about waking up next to me?</label><input type="text" id="q53" required></div>
+          <div class="question-group"><label for="q54">54. If our love story was a book title, what would it be?</label><input type="text" id="q54" required></div>
+          <div class="question-group"><label for="q55">55. What is your favorite memory of us cooking or eating together?</label><textarea id="q55" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q56">56. What is something you’re proud of us for overcoming?</label><textarea id="q56" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q57">57. How do you feel when you see me dressed up?</label><input type="text" id="q57" required></div>
+          <div class="question-group"><label for="q58">58. What is your favorite non-physical trait of mine?</label><input type="text" id="q58" required></div>
+          <div class="question-group"><label for="q59">59. What is one romantic place in the world you want to kiss me at?</label><input type="text" id="q59" required></div>
+          <div class="question-group"><label for="q60">60. How do you feel when I whisper "I love you"?</label><input type="text" id="q60" required></div>
+          <div class="question-group"><label for="q61">61. What is your favorite memory of us taking a walk together?</label><textarea id="q61" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q62">62. What is one thing I do that instantly relaxes you?</label><input type="text" id="q62" required></div>
+          <div class="question-group"><label for="q63">63. What is your favorite love language to receive from me?</label><input type="text" id="q63" required></div>
+          <div class="question-group"><label for="q64">64. What is one memory of us that always brings tears of joy?</label><textarea id="q64" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q65">65. What is your favorite habit we have developed together?</label><input type="text" id="q65" required></div>
+          <div class="question-group"><label for="q66">66. What is one thing you miss most about me when we’re apart?</label><textarea id="q66" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q67">67. What is your favorite compliment to give me?</label><input type="text" id="q67" required></div>
+          <div class="question-group"><label for="q68">68. How do you feel when I look deep into your eyes?</label><input type="text" id="q68" required></div>
+          <div class="question-group"><label for="q69">69. What is your favorite sweet treat to share with me?</label><input type="text" id="q69" required></div>
+          <div class="question-group"><label for="q70">70. What is one thing you want to do with me on our next day off?</label><textarea id="q70" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q71">71. What is your favorite nickname I call you?</label><input type="text" id="q71" required></div>
+          <div class="question-group"><label for="q72">72. What is one dream date night you want to plan for us?</label><textarea id="q72" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q73">73. What is your favorite part of my body to hug?</label><input type="text" id="q73" required></div>
+          <div class="question-group"><label for="q74">74. How do you feel when I play with your hair?</label><input type="text" id="q74" required></div>
+          <div class="question-group"><label for="q75">75. What is one thing you love about our home life?</label><textarea id="q75" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q76">76. What is your favorite surprise I ever pulled off for you?</label><textarea id="q76" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q77">77. What is one photo of me you keep close on your phone?</label><input type="text" id="q77" required></div>
+          <div class="question-group"><label for="q78">78. What is your favorite memory of us late at night?</label><textarea id="q78" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q79">79. What makes you feel most connected to me?</label><textarea id="q79" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q80">80. How many kisses do I owe you today?</label><input type="text" id="q80" required></div>
+          <div class="question-group"><label for="q81">81. What is one place in our home that holds the best memories?</label><input type="text" id="q81" required></div>
+          <div class="question-group"><label for="q82">82. What is your favorite romantic movie we’ve watched together?</label><input type="text" id="q82" required></div>
+          <div class="question-group"><label for="q83">83. What is one thing I do that makes you feel like the luckiest husband?</label><textarea id="q83" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q84">84. What is your favorite tradition we have?</label><input type="text" id="q84" required></div>
+          <div class="question-group"><label for="q85">85. What is one sweet text message I sent you that you saved?</label><textarea id="q85" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q86">86. How do you feel when we hold hands while driving?</label><input type="text" id="q86" required></div>
+          <div class="question-group"><label for="q87">87. What is your favorite memory of us on a beach or in nature?</label><textarea id="q87" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q88">88. What is one thing you love about my laugh?</label><input type="text" id="q88" required></div>
+          <div class="question-group"><label for="q89">89. What is your favorite way to cuddle in bed?</label><input type="text" id="q89" required></div>
+          <div class="question-group"><label for="q90">90. What is one promise you know I will always keep?</label><textarea id="q90" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q91">91. What is your favorite memory of our first kiss?</label><textarea id="q91" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q92">92. What is one thing you want to whisper in my ear right now?</label><input type="text" id="q92" required></div>
+          <div class="question-group"><label for="q93">93. What makes you smile when you look at your wedding ring?</label><textarea id="q93" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q94">94. What is your favorite way to spend Sunday morning with me?</label><input type="text" id="q94" required></div>
+          <div class="question-group"><label for="q95">95. What is one romantic habit you never want us to stop?</label><textarea id="q95" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q96">96. What is your favorite memory of us laughing until we cried?</label><textarea id="q96" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q97">97. How do you feel when I place my head on your chest?</label><input type="text" id="q97" required></div>
+          <div class="question-group"><label for="q98">98. What is one romantic surprise you want from me this month?</label><textarea id="q98" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q99">99. What is your favorite thing about building a life together?</label><textarea id="q99" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q100">100. In three words, how would you describe our love story?</label><input type="text" id="q100" required></div>
 
-          <div class="question-group">
-            <label for="q3">3. 😈 What is one fantasy or date night idea you want to try with me?</label>
-            <textarea id="q3" rows="2" required></textarea>
-          </div>
 
-          <div class="question-group">
-            <label for="q4">4. 🕯️ Pick our vibe for tonight:</label>
-            <select id="q4" required>
-              <option value="">Choose one...</option>
-              <option value="Candlelit & Romantic">A) Candlelit & Romantic</option>
-              <option value="Playful & Fun">B) Playful & Fun</option>
-              <option value="Wild & Passionate">C) Wild & Passionate</option>
-            </select>
-          </div>
+          <h3 class="section-title">🔥 100 Spicy Questions</h3>
 
-          <div class="question-group">
-            <label for="q5">5. 💋 How many kisses do I deserve when you come home?</label>
-            <input type="text" id="q5" placeholder="e.g. Infinite!" required>
-          </div>
+          <div class="question-group"><label for="q101">101. What is your favorite piece of lingerie or outfit I wear?</label><input type="text" id="q101" required></div>
+          <div class="question-group"><label for="q102">102. What is your ultimate fantasy you want to try with me?</label><textarea id="q102" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q103">103. Where is the wildest or most adventurous place you want to make out?</label><textarea id="q103" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q104">104. What is your favorite physical position when we are intimate?</label><input type="text" id="q104" required></div>
+          <div class="question-group"><label for="q105">105. What is something naughty I can whisper in your ear to drive you wild?</label><textarea id="q105" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q106">106. Do you prefer lights completely off, dim candlelight, or lights on?</label><input type="text" id="q106" required></div>
+          <div class="question-group"><label for="q107">107. What is your favorite part of my body to touch or kiss?</label><input type="text" id="q107" required></div>
+          <div class="question-group"><label for="q108">108. What is your favorite time of day for intimacy (morning, night, or afternoon)?</label><input type="text" id="q108" required></div>
+          <div class="question-group"><label for="q109">109. What is one naughty text message you’ve wanted to send me at work?</label><textarea id="q109" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q110">110. How do you like me to initiate intimacy with you?</label><textarea id="q110" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q111">111. What is your favorite memory of our sex life so far?</label><textarea id="q111" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q112">112. What is one outfit you want me to buy just for your eyes?</label><input type="text" id="q112" required></div>
+          <div class="question-group"><label for="q113">113. How do you feel when I tease you in public without anyone knowing?</label><textarea id="q113" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q114">114. What is your favorite kind of kiss during intimate moments?</label><input type="text" id="q114" required></div>
+          <div class="question-group"><label for="q115">115. What is one massage area you want me to give you tonight?</label><input type="text" id="q115" required></div>
+          <div class="question-group"><label for="q116">116. What is your favorite spot on your body for me to kiss?</label><input type="text" id="q116" required></div>
+          <div class="question-group"><label for="q117">117. Do you prefer slow and passionate or wild and intense?</label><input type="text" id="q117" required></div>
+          <div class="question-group"><label for="q118">118. What is one roleplay idea you’d secretly love to try?</label><textarea id="q118" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q119">119. What is your favorite noise or sound I make when we're close?</label><input type="text" id="q119" required></div>
+          <div class="question-group"><label for="q120">120. Where in our house is your favorite place outside the bedroom?</label><input type="text" id="q120" required></div>
+          <div class="question-group"><label for="q121">121. What is one spicy dare you want to give me right now?</label><textarea id="q121" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q122">122. How fast does your heart beat when I touch the back of your neck?</label><input type="text" id="q122" required></div>
+          <div class="question-group"><label for="q123">123. What is one thing I do that turns you on instantly?</label><textarea id="q123" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q124">124. What is your favorite flavor or scent during intimate time?</label><input type="text" id="q124" required></div>
+          <div class="question-group"><label for="q125">125. How do you feel when I wear your shirts with nothing underneath?</label><textarea id="q125" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q126">126. What is your favorite way to be woken up in the morning?</label><input type="text" id="q126" required></div>
+          <div class="question-group"><label for="q127">127. What is one boundary you want to push together in the bedroom?</label><textarea id="q127" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q128">128. Do you like foreplay to last 10 minutes, 30 minutes, or an hour?</label><input type="text" id="q128" required></div>
+          <div class="question-group"><label for="q129">129. What is your favorite memory of a quickie we had?</label><textarea id="q129" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q130">130. What is one spicy item or toy you want to add to our bedroom?</label><input type="text" id="q130" required></div>
+          <div class="question-group"><label for="q131">131. How do you feel when I take control in the bedroom?</label><textarea id="q131" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q132">132. How do you feel when YOU take complete control?</label><textarea id="q132" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q133">133. What color lingerie do you find the sexiest on me?</label><input type="text" id="q133" required></div>
+          <div class="question-group"><label for="q134">134. What is your favorite spot for me to bite or leave a soft kiss?</label><input type="text" id="q134" required></div>
+          <div class="question-group"><label for="q135">135. What is one video or idea that inspired a fantasy for you?</label><textarea id="q135" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q136">136. What is your favorite shower or bath memory with me?</label><textarea id="q136" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q137">137. How turned on do you get when we touch under the blanket?</label><input type="text" id="q137" required></div>
+          <div class="question-group"><label for="q138">138. What is your favorite look I give you when I want you?</label><input type="text" id="q138" required></div>
+          <div class="question-group"><label for="q139">139. What is one place on vacation you want to get intimate?</label><input type="text" id="q139" required></div>
+          <div class="question-group"><label for="q140">140. What music or playlist do you like playing during sex?</label><input type="text" id="q140" required></div>
+          <div class="question-group"><label for="q141">141. How do you feel when I kiss your chest or stomach?</label><input type="text" id="q141" required></div>
+          <div class="question-group"><label for="q142">142. What is your favorite memory of us in a hotel room?</label><textarea id="q142" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q143">143. What is one spicy secret you’ve never told anyone else?</label><textarea id="q143" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q144">144. How many rounds do you want us to go tonight?</label><input type="text" id="q144" required></div>
+          <div class="question-group"><label for="q145">145. What is your favorite reaction from me when you touch me?</label><input type="text" id="q145" required></div>
+          <div class="question-group"><label for="q146">146. What is one spicy game (blindfolds, ice, feather) you want to play?</label><textarea id="q146" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q147">147. What is your favorite position when you want to look into my eyes?</label><input type="text" id="q147" required></div>
+          <div class="question-group"><label for="q148">148. What is your favorite position when you want maximum passion?</label><input type="text" id="q148" required></div>
+          <div class="question-group"><label for="q149">149. What is one naughty gift you want for your next birthday/anniversary?</label><input type="text" id="q149" required></div>
+          <div class="question-group"><label for="q150">150. How bad do you want me right now on a scale of 1 to 100?</label><input type="text" id="q150" required></div>
+          <div class="question-group"><label for="q151">151. What is your favorite way I touch your hair when making out?</label><input type="text" id="q151" required></div>
+          <div class="question-group"><label for="q152">152. What is one place in public you had a spicy thought about me?</label><textarea id="q152" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q153">153. What is your favorite type of kiss on my neck?</label><input type="text" id="q153" required></div>
+          <div class="question-group"><label for="q154">154. What is one outfit you want to strip off me tonight?</label><input type="text" id="q154" required></div>
+          <div class="question-group"><label for="q155">155. Do you prefer me being gentle or slightly dominant?</label><input type="text" id="q155" required></div>
+          <div class="question-group"><label for="q156">156. What is your favorite spicy memory from our honeymoon or trip?</label><textarea id="q156" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q157">157. What is one naughty word you love hearing me say?</label><input type="text" id="q157" required></div>
+          <div class="question-group"><label for="q158">158. What is your favorite angle to see my body?</label><input type="text" id="q158" required></div>
+          <div class="question-group"><label for="q159">159. What is one fantasy involving a mirror you want to try?</label><textarea id="q159" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q160">160. How turned on do you get when I lock the bedroom door?</label><input type="text" id="q160" required></div>
+          <div class="question-group"><label for="q161">161. What is your favorite position on the sofa?</label><input type="text" id="q161" required></div>
+          <div class="question-group"><label for="q162">162. What is your favorite position standing up?</label><input type="text" id="q162" required></div>
+          <div class="question-group"><label for="q163">163. What is one thing you love about aftercare and post-sex cuddles?</label><textarea id="q163" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q164">164. What is your favorite memory of us kissing in the rain or water?</label><textarea id="q164" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q165">165. What is one naughty text you want me to send you right now?</label><input type="text" id="q165" required></div>
+          <div class="question-group"><label for="q166">166. What is your favorite touch when you’re driving and I’m next to you?</label><input type="text" id="q166" required></div>
+          <div class="question-group"><label for="q167">167. How do you feel when I bite my lip while looking at you?</label><input type="text" id="q167" required></div>
+          <div class="question-group"><label for="q168">168. What is your favorite spicy memory in a pool or jacuzzi?</label><textarea id="q168" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q169">169. What is one position you want us to master together?</label><input type="text" id="q169" required></div>
+          <div class="question-group"><label for="q170">170. What is your favorite physical sensation when I touch you?</label><textarea id="q170" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q171">171. How do you feel when I whisper naughty secrets in public?</label><textarea id="q171" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q172">172. What is your favorite memory of us in the kitchen?</label><textarea id="q172" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q173">173. What is one massage oil or scent you want us to try?</label><input type="text" id="q173" required></div>
+          <div class="question-group"><label for="q174">174. What is your favorite part of my body to rest your hands on?</label><input type="text" id="q174" required></div>
+          <div class="question-group"><label for="q175">175. What is one fantasy you had about me before we got married?</label><textarea id="q175" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q176">176. How do you like me to move during intimacy?</label><textarea id="q176" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q177">177. What is your favorite time duration for a romantic session?</label><input type="text" id="q177" required></div>
+          <div class="question-group"><label for="q178">178. What is your favorite memory of us teasing each other all day?</label><textarea id="q178" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q179">179. What is one spicy trick or move you want to show me?</label><textarea id="q179" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q180">180. How turned on do you get when I dress up extra sexy for you?</label><input type="text" id="q180" required></div>
+          <div class="question-group"><label for="q181">181. What is your favorite kiss on my lips (soft, deep, or biting)?</label><input type="text" id="q181" required></div>
+          <div class="question-group"><label for="q182">182. What is one spicy challenge you give me for tonight?</label><textarea id="q182" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q183">183. What is your favorite memory of us undressing each other?</label><textarea id="q183" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q184">184. What is one romantic or spicy game app we should play?</label><input type="text" id="q184" required></div>
+          <div class="question-group"><label for="q185">185. What is your favorite feeling right before we climax together?</label><textarea id="q185" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q186">186. How do you feel when I trace my fingers down your back?</label><input type="text" id="q186" required></div>
+          <div class="question-group"><label for="q187">187. What is your favorite memory of us hugging with no clothes on?</label><textarea id="q187" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q188">188. What is one naughty surprise you want waiting in bed for you?</label><textarea id="q188" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q189">189. What is your favorite position when we are both tired but passionate?</label><input type="text" id="q189" required></div>
+          <div class="question-group"><label for="q190">190. What is one photo you want me to take for you right now?</label><input type="text" id="q190" required></div>
+          <div class="question-group"><label for="q191">191. How do you feel when I hold you tight during climax?</label><textarea id="q191" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q192">192. What is your favorite memory of a spontaneous kiss?</label><textarea id="q192" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q193">193. What is one thing you love about my physical touch?</label><textarea id="q193" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q194">194. What is your favorite place on my body to lay your head after?</label><input type="text" id="q194" required></div>
+          <div class="question-group"><label for="q195">195. What is one spicy sentence you want me to text you during the day?</label><input type="text" id="q195" required></div>
+          <div class="question-group"><label for="q196">196. How turned on are you thinking about tonight?</label><input type="text" id="q196" required></div>
+          <div class="question-group"><label for="q197">197. What is your favorite memory of us making love for hours?</label><textarea id="q197" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q198">198. What is one thing you want us to do under the sheets right now?</label><textarea id="q198" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q199">199. What is your ultimate vow to keep our passion alive forever?</label><textarea id="q199" rows="2" required></textarea></div>
+          <div class="question-group"><label for="q200">200. In three words, how does our sex life make you feel?</label><input type="text" id="q200" required></div>
 
-          <button type="submit">Send Answers to Wifey 💌</button>
+          <button type="submit" style="margin-top: 25px;">Send All 200 Answers to Wifey 💌</button>
         </form>
       </div>
 
-      <!-- STEP 4: LOVE COUPONS -->
+      <!-- LOVE COUPONS -->
       <div class="card">
         <h2>🎟️ Your Love Coupons</h2>
         <p>Redeemable anytime with your wife!</p>
@@ -229,15 +371,11 @@
       </div>
 
     </div>
-
   </div>
 
   <script>
-    // Set your custom secret passcode here (lowercase or numbers)
-    const SECRET_PASS = "RaniaAwais"; // CHANGE THIS to your date or secret phrase!
-
-    // Email address where his answers will be sent
-    const YOUR_EMAIL = "raniachaudhary07@gmail.com"; // CHANGE THIS to your actual email!
+    const SECRET_PASS = "RaniaAwais";
+    const YOUR_EMAIL = "raniachaudhary07@gmail.com";
 
     function checkPassword() {
       const input = document.getElementById('passcode').value.trim();
@@ -257,22 +395,17 @@
 
     function sendAnswers(e) {
       e.preventDefault();
-      
-      const q1 = document.getElementById('q1').value;
-      const q2 = document.getElementById('q2').value;
-      const q3 = document.getElementById('q3').value;
-      const q4 = document.getElementById('q4').value;
-      const q5 = document.getElementById('q5').value;
+      let body = "Here are my 200 answers for you my love:\n\n";
+      const totalQuestions = 200;
 
-      const body = `Here are my answers for you my love:\n\n` +
-        `1. When I realized I loved you:\n${q1}\n\n` +
-        `2. Favorite outfit/lingerie:\n${q2}\n\n` +
-        `3. Fantasy / Date night idea:\n${q3}\n\n` +
-        `4. Vibe for tonight:\n${q4}\n\n` +
-        `5. Kisses owed:\n${q5}\n`;
+      for (let i = 1; i <= totalQuestions; i++) {
+        const input = document.getElementById('q' + i);
+        if (input && input.value) {
+          body += `Q${i}: ${input.value}\n`;
+        }
+      }
 
-      const mailtoLink = `mailto:${YOUR_EMAIL}?subject=${encodeURIComponent("My Quiz Answers ❤️")}&body=${encodeURIComponent(body)}`;
-      
+      const mailtoLink = `mailto:${YOUR_EMAIL}?subject=${encodeURIComponent("My 200 Quiz Answers ❤️")}&body=${encodeURIComponent(body)}`;
       window.location.href = mailtoLink;
     }
   </script>
